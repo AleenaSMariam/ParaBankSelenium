@@ -57,16 +57,16 @@ def take_allure_screenshot(driver, test_name):
                 name=f"screenshot_{test_name}",
                 attachment_type=allure.attachment_type.PNG
             )
-            print(f"📸 Screenshot captured and attached to Allure for failed test: {test_name}")
+            print(f"Screenshot captured and attached to Allure for failed test: {test_name}")
         else:
             # Ensure reports/screenshots exists
             os.makedirs(os.path.join("reports", "screenshots"), exist_ok=True)
             file_path = os.path.join("reports", "screenshots", f"screenshot_{test_name}.png")
             with open(file_path, "wb") as f:
                 f.write(screenshot)
-            print(f"📸 Screenshot saved to {file_path} for failed test: {test_name}")
+            print(f"Screenshot saved to {file_path} for failed test: {test_name}")
     except Exception as e:
-        print(f"⚠️ Could not capture screenshot: {e}")
+        print(f"Could not capture screenshot: {e}")
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -102,6 +102,6 @@ def pytest_sessionfinish(session, exitstatus):
         with open("allure-results/environment.properties", "w") as f:
             for key, value in env_props.items():
                 f.write(f"{key}={value}\n")
-        print("✅ Environment properties saved for Allure report")
+        print("Environment properties saved for Allure report")
     except Exception as e:
-        print(f"⚠️ Could not save environment properties: {e}")
+        print(f"Could not save environment properties: {e}")
