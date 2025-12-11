@@ -1,0 +1,10 @@
+# Allure report files - not part of source code
+allure-report/** linguist-vendored
+allure-results/** linguist-vendored
+
+# Binary files
+*.png linguist-vendored
+*.zip linguist-vendored
+
+# Identify Python as the primary language
+*.py linguist-language=Python
