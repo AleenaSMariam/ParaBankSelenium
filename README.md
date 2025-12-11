@@ -14,17 +14,33 @@ Automated test suite for ParaBank application using Selenium WebDriver with Pyth
 
 ## Project Overview
 
-This project contains automated UI tests for the ParaBank application, covering:
+This project contains automated UI tests for the ParaBank application using industry best practices and modern testing frameworks.
+
+### What We Test
 - User Registration
 - Login Functionality
 - Bill Payment
 - Account Management
 - Other critical user workflows
 
-**Framework:** Selenium WebDriver  
-**Language:** Python  
-**Testing Framework:** pytest  
-**Reporting:** Allure Reports  
+### Technology Stack
+| Component | Technology |
+|-----------|-----------|
+| **Language** | Python 3.8+ |
+| **UI Automation** | Selenium WebDriver 4.15.0 |
+| **Design Pattern** | Page Object Model (POM) |
+| **Testing Framework** | pytest |
+| **Test Reporting** | Allure Reports |
+| **WebDriver Management** | webdriver-manager |
+| **Data Handling** | openpyxl (Excel support) |
+
+### Architecture & Design Patterns
+- **Page Object Model (POM):** All UI interactions are encapsulated in page objects for better maintainability
+- **Selenium WebDriver:** Industry-standard WebDriver for cross-browser automation
+- **Python:** Clean, readable, and maintainable test code
+- **Explicit Waits:** Reliable element interactions using WebDriverWait
+- **Data-Driven Testing:** Separate test data from test logic
+- **Allure Reports:** Beautiful, detailed HTML test reports with history tracking  
 
 ## Prerequisites
 
