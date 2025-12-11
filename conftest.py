@@ -1,5 +1,9 @@
 import pytest
-import allure
+try:
+    import allure
+    HAS_ALLURE = True
+except Exception:
+    HAS_ALLURE = False
 import os
 from datetime import datetime
 from selenium import webdriver
@@ -46,14 +50,21 @@ def take_allure_screenshot(driver, test_name):
     try:
         # Take screenshot as PNG
         screenshot = driver.get_screenshot_as_png()
-        
-        # Attach to Allure report
-        allure.attach(
-            screenshot,
-            name=f"screenshot_{test_name}",
-            attachment_type=allure.attachment_type.PNG
-        )
-        print(f"📸 Screenshot captured for failed test: {test_name}")
+        # If Allure is available, attach; otherwise save locally
+        if HAS_ALLURE:
+            allure.attach(
+                screenshot,
+                name=f"screenshot_{test_name}",
+                attachment_type=allure.attachment_type.PNG
+            )
+            print(f"📸 Screenshot captured and attached to Allure for failed test: {test_name}")
+        else:
+            # Ensure reports/screenshots exists
+            os.makedirs(os.path.join("reports", "screenshots"), exist_ok=True)
+            file_path = os.path.join("reports", "screenshots", f"screenshot_{test_name}.png")
+            with open(file_path, "wb") as f:
+                f.write(screenshot)
+            print(f"📸 Screenshot saved to {file_path} for failed test: {test_name}")
     except Exception as e:
         print(f"⚠️ Could not capture screenshot: {e}")
 
