@@ -133,6 +133,28 @@ Or use the provided script:
 
 This will generate and open the Allure report in your default browser.
 
+## Continuous Integration (Jenkins)
+
+This project is configured for CI/CD using Jenkins.
+
+### Configuration
+- **Source Code Management:** Git (GitHub)
+- **Build Triggers:** Poll SCM (`H/5 * * * *` runs every 5 minutes if changes are detected)
+- **Build Environment:** Python 3.8+
+
+### Build Steps
+1. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. **Run Tests:**
+   ```bash
+   pytest --alluredir=allure-results
+   ```
+
+### Reporting
+- **Allure Plugin:** The Allure Jenkins plugin is used to generate trend reports and visualize test results within Jenkins.
+
 ## Configuration
 
 ### pytest.ini
