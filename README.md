@@ -10,7 +10,6 @@ Automated test suite for ParaBank application using Selenium WebDriver with Pyth
 - [Running Tests](#running-tests)
 - [Test Reports](#test-reports)
 - [Configuration](#configuration)
-- [Contributing](#contributing)
 
 ## Project Overview
 
